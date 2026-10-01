@@ -44,13 +44,14 @@ jobs:
           echo "Checking health on port $INACTIVE_PORT..."
           while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
               RESPONSE=$(curl -s http://localhost:$INACTIVE_PORT/health || true)
+              echo "Health check response: $RESPONSE"
               if [[ "$RESPONSE" == *"ok"* ]]; then
                   echo "Health check passed!"
                   HEALTHY=true
                   break
               else
                   echo "Application starting... retrying ($((RETRY_COUNT+1))/$MAX_RETRIES)"
-                  sleep 2
+                  sleep 3
                   RETRY_COUNT=$((RETRY_COUNT+1))
               fi
           done
