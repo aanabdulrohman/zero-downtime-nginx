@@ -66,13 +66,13 @@ jobs:
           ACTIVE_CONTAINER: ${{ steps.detect-env.outputs.active_container }}
         run: |
           echo "Switching NGINX traffic to $ACTIVE_CONTAINER..."
-          
-          # Render template NGINX
+
+          # Render template ke dalam folder nginx/nginx.conf
           export ACTIVE_CONTAINER
-          envsubst '$ACTIVE_CONTAINER' < nginx.conf.template > nginx.conf
+          envsubst '$ACTIVE_CONTAINER' < nginx/nginx.conf.template > nginx/nginx.conf
 
           # Salin ke container NGINX dan reload secara graceful
-          docker cp nginx.conf nginx-proxy:/etc/nginx/conf.d/default.conf
+          docker cp nginx/nginx.conf nginx-proxy:/etc/nginx/conf.d/default.conf
           docker exec nginx-proxy nginx -s reload
-          
+
           echo "Deployment completed successfully with Zero-Downtime!"
