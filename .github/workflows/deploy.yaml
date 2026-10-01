@@ -27,6 +27,10 @@ jobs:
             echo "active_container=app_green" >> $GITHUB_OUTPUT
             echo "inactive_port=8002" >> $GITHUB_OUTPUT
           fi
+      
+      - name: Start All Services via Docker Compose
+        run: |
+          docker compose up -d --remove-orphans
 
       - name: Build and Start Inactive Environment
         run: |
