@@ -20,11 +20,11 @@ jobs:
           
           if [[ "$CURRENT_ACTIVE" == *"green"* ]]; then
             echo "inactive_env=blue" >> $GITHUB_OUTPUT
-            echo "active_container=app_blue" >> $GITHUB_OUTPUT
+            echo "active_container=app-blue" >> $GITHUB_OUTPUT
             echo "inactive_port=8001" >> $GITHUB_OUTPUT
           else
             echo "inactive_env=green" >> $GITHUB_OUTPUT
-            echo "active_container=app_green" >> $GITHUB_OUTPUT
+            echo "active_container=app-green" >> $GITHUB_OUTPUT
             echo "inactive_port=8002" >> $GITHUB_OUTPUT
           fi
       
