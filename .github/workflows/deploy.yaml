@@ -2,8 +2,8 @@ name: Zero-Downtime Blue/Green Deployment
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - '*.*.*' # Trigger deployment on version tags like v1.0.0
 
 jobs:
   deploy:
